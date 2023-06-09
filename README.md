@@ -2,8 +2,13 @@
 
 ## For local testing and deployment:
 
-### Installation steps for the apache airflow using docker.
+### 1. Installation steps for the apache airflow using docker.
  Make sure you have Docker and Docker Compose installed on your system. If not, you can refer to the official Docker documentation to install them. (https://docs.docker.com/get-docker/)
+ * Create a directory for your Airflow project and navigate to it using the command line. (ex- mkdir airflow-default - >cd  airflow-default)
+ * To deploy Airflow on Docker Compose, you should fetch docker-compose.yaml. Use the below command to download the docker-compose.yaml file.
+ ```
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.3.3/docker-compose.yaml'
+```
 
 ## Libraries used
 * pandas
