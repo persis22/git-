@@ -1,10 +1,9 @@
 # Airflow documentation
 
-# Readme file
+## For local testing and deployment:
 
-## Introduction
-
-This code reads input files, processes the data, and writes the output to a summary csv file. The input files are in the CSV format, and the output file will also be in CSV format.
+### Installation steps for the apache airflow using docker.
+ Make sure you have Docker and Docker Compose installed on your system. If not, you can refer to the official Docker documentation to install them. (https://docs.docker.com/get-docker/)
 
 ## Libraries used
 * pandas
