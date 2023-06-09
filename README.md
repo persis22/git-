@@ -9,34 +9,76 @@
    ```
    curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.3.3/docker-compose.yaml'
    ```
+   * Open the code editor and check whether docker-compose.yaml file is downloaded or not.
+   * open the terminal in vs code 
+   * Give the following commands
+      ``` 
+      mkdir -p ./dags ./logs ./plugins
+      ```
+      ```			
+      echo -e "AIRFLOW_UID=$(id -u)" > .env
+      ```
+      
+      -->The above command creates a .env file and sets the AIRFLOW_UID variable to the user ID of the current user, which can be useful for configuring environment variables in an Airflow project.
+      ```
+      docker-compose up airflow-init
+      ```
+      ```
+      docker-compose up
+      ```
+    * By this all the services will be up and running.
+      
+2. Make sure the airflow web server is running in the terminal after running the ‘airflow-init’ command. 
 
-## Libraries used
-* pandas
+3. Make sure airflow scheduler is also running as it automatically picks up the DAG within the dag folder and schedules it based on start_date.
 
-## Installation
+4. The web server can now be accessed through local host (http://0.0.0.0:8080) with the default username and password being ‘airflow’ for both.
 
-Installation:
+5. Create a connection using aws_access_key and aws_secret_access_id in the airflow by navigating to admin > conections > new in airflow web UI.
 
-To run the script, you can simply extract the "requirements.txt" into the same pwd and install the required packages using the following command:
-```
-pip install -r requirements.txt
-```
+    * Connection_id: s3_conn
+    * Connection_type : Amazon s3
+    * Description : -
+    * Host: -
+    * Schema : -
+    * Login : -
+    * Password : -
+    * Port : -
+    * Extras : {"aws_access_key_id": "your_aws_access_key_id", "aws_secret_access_key": "your_aws_secret_access_key"}
 
-## Functions:
 
-   This code has the following functions:
-* `read_files(file1, file2, file3)`: This function loads the input files into pandas dataframes.
-* `merge_user_alias_dataframe(users_df, alias_df)`: This function merges the users dataframe with the aliases dataframe using the user_id as a common parameter.
-* `merge_final_dataframe(merged_df, events_df)`: This function merges the result with the events dataframes to get the feature assignments for each user.
-* `Aggregate_by_feature(final_df)`: This function aggregates the data by feature_key and feature_value to get the final output.
-* `write_to_csv(summary_df)`: This function writes the output to a summary file.
+6. Make sure the AWS credentials are correct and has appropriate permissions as this connection allows us to access S3 files locally.
 
-## Usage
-   
-* To use this code, simply ensure that the input files are in the CSV format and that the names are set correctly.
-* Run the code, and the output will be written to the file summary.csv.
-* The code can also be imported as a module, and the functions can be used separately.
+7. Copy the scripts into airflow > dags folder.
 
-## How to run
-* To run the code, simply run the file in your Python environment.
-* The code is written in Python 3.x and requires pandas library to be installed.
+8. Now the dags will be present and can be seen in the airflow web UI.
+
+9. Run the DAG manually by triggering it for local testing.
+
+
+## For production-level deployment:
+
+1. Push the code into the necessary repository. 
+
+2. Set up a continuous integration/continuous deployment (CI/CD) pipeline to automatically deploy the DAG file to the production DAG directory.
+
+3. Make sure the AWS credentials are correct and has appropriate permissions.
+
+4. Validate the DAG file using the airflow dags validate command to ensure there are no configuration issues.
+
+5. Access the Airflow web UI to monitor the execution of the each DAG.
+
+6. Create a connection using aws_access_key and aws_secret_access_id in the airflow by navigating to admin > conections > new in airflow web UI.
+
+    * Connection_id: s3_conn
+    * Connection_type : Amazon s3
+    * Description : -
+    * Host: -
+    * Schema : -
+    * Login : -
+    * Password : -
+    * Port : -
+    * Extras : {"aws_access_key_id": "your_aws_access_key_id", "aws_secret_access_key": "your_aws_secret_access_key"}
+
+7. Review the DAG run history, logs, and task statuses to ensure everything is running smoothly.
+
