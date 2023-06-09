@@ -8,9 +8,9 @@
 
     • To deploy Airflow on Docker Compose, you should fetch docker-compose.yaml.
       Use the below command to download the docker-compose.yaml file.
-      '''
-      curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.3.3/docker-compose.yaml'
-      '''
+'''
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.3.3/docker-compose.yaml'
+'''
       
       
     • Open the code editor and check whether docker-compose.yaml file is downloaded or not.
