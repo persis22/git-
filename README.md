@@ -9,6 +9,8 @@
    ```
    curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.3.3/docker-compose.yaml'
    ```
+   ![image](https://github.com/persis22/git-/assets/104055832/24dde79d-a6a0-49d8-b4df-7b8db758ffd4)
+
    * Open the code editor and check whether docker-compose.yaml file is downloaded or not.
    * open the terminal in vs code 
    * Give the following commands
