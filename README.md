@@ -9,7 +9,6 @@
    ```
    curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.3.3/docker-compose.yaml'
    ```
-   ![Alt Text](path/to/image.png)
    * Open the code editor and check whether docker-compose.yaml file is downloaded or not.
    * open the terminal in vs code 
    * Give the following commands
